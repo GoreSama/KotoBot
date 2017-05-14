@@ -20,18 +20,17 @@ import net.dv8tion.jda.core.exceptions.RateLimitedException;
 
 public class Client {
 
-	// lol
 	private static JDA jda;
 	public static final CommandParser parser = new CommandParser();
 	public static HashMap<String, Command> commands = new HashMap<String, Command>();
-	public static final String KOTOBOT_TOKEN = "";
+	public static final String KOTOBOT_TOKEN = "MzEyODgyNjkwNjE1NjcyODMz.C_lRIA.DRHrZTvFfjNAvJT-2IZXtGGpPTE";
 
 	public static void main(String[] args) {
 		try {
 			jda = new JDABuilder(AccountType.BOT).setToken(KOTOBOT_TOKEN).addEventListener(new ListenerClass())
-					.buildBlocking();
+					.buildAsync();
 			jda.setAutoReconnect(true);
-		} catch (LoginException | IllegalArgumentException | InterruptedException | RateLimitedException e) {
+		} catch (LoginException | IllegalArgumentException | RateLimitedException e) {
 			e.printStackTrace();
 		}
 		commands.put("hello", new Hello());
