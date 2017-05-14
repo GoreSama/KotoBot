@@ -45,7 +45,8 @@ public class Client {
 		}
 		commands.put("hello", new Hello());
 		commands.put("roll", new Roll());
-		commands.put("shoot", new Shoot());
+		commands.put("shoot", new Shoot()); // this has no significant value
+											// honestly
 	}
 
 	public static void handleCommand(CommandParser.CommandContainer cmd) {
