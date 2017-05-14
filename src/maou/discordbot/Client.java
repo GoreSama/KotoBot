@@ -2,10 +2,7 @@ package maou.discordbot;
 
 import java.io.File;
 import java.io.FileOutputStream;
-import java.io.IOException;
 import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -30,23 +27,16 @@ public class Client {
 	public static final String KOTOBOT_TOKEN = "";
 
 	public static void main(String[] args) {
-		String token = "";
 		try {
-			token = new String(Files.readAllBytes(Paths.get(KOTOBOT_TOKEN)));
-		} catch (IOException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
-		try {
-			jda = new JDABuilder(AccountType.BOT).setToken(token).addEventListener(new ListenerClass()).buildBlocking();
+			jda = new JDABuilder(AccountType.BOT).setToken(KOTOBOT_TOKEN).addEventListener(new ListenerClass())
+					.buildBlocking();
 			jda.setAutoReconnect(true);
 		} catch (LoginException | IllegalArgumentException | InterruptedException | RateLimitedException e) {
 			e.printStackTrace();
 		}
 		commands.put("hello", new Hello());
 		commands.put("roll", new Roll());
-		commands.put("shoot", new Shoot()); // this has no significant value
-											// honestly
+		commands.put("shoot", new Shoot());
 	}
 
 	public static void handleCommand(CommandParser.CommandContainer cmd) {
