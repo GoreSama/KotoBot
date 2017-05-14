@@ -23,7 +23,7 @@ public class Client {
 	private static JDA jda;
 	public static final CommandParser parser = new CommandParser();
 	public static HashMap<String, Command> commands = new HashMap<String, Command>();
-	public static final String KOTOBOT_TOKEN = "MzEyODgyNjkwNjE1NjcyODMz.C_lRIA.DRHrZTvFfjNAvJT-2IZXtGGpPTE";
+	public static final String KOTOBOT_TOKEN = "";
 
 	public static void main(String[] args) {
 		try {
