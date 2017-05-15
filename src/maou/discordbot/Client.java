@@ -11,6 +11,7 @@ import java.util.HashMap;
 import javax.security.auth.login.LoginException;
 
 import maou.discordbot.commands.Hello;
+import maou.discordbot.commands.PurgeCommand;
 import maou.discordbot.commands.Roll;
 import maou.discordbot.commands.Shoot;
 import net.dv8tion.jda.core.AccountType;
@@ -35,7 +36,8 @@ public class Client {
 		}
 		commands.put("hello", new Hello());
 		commands.put("roll", new Roll());
-		commands.put("shoot", new Shoot()); // hang myself
+		commands.put("kms", new Shoot());
+		commands.put("purge", new PurgeCommand());
 	}
 
 	public static void handleCommand(CommandParser.CommandContainer cmd) {
