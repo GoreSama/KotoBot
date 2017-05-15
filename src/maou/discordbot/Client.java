@@ -35,7 +35,7 @@ public class Client {
 		}
 		commands.put("hello", new Hello());
 		commands.put("roll", new Roll());
-		commands.put("shoot", new Shoot());
+		commands.put("shoot", new Shoot()); // hang myself
 	}
 
 	public static void handleCommand(CommandParser.CommandContainer cmd) {
