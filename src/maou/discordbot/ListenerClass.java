@@ -1,5 +1,6 @@
 package maou.discordbot;
 
+import net.dv8tion.jda.core.entities.Message;
 import net.dv8tion.jda.core.entities.TextChannel;
 import net.dv8tion.jda.core.events.ReadyEvent;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
@@ -10,17 +11,20 @@ public class ListenerClass extends ListenerAdapter {
 		
 	@Override
 	public void onMessageReceived(MessageReceivedEvent event) {
-		TextChannel channel = event.getTextChannel();
-		System.out.println(event.getAuthor().getName() + ": " + event.getMessage().getContent());
-		if (event.getMessage().getContent().startsWith("!")
+		if (event.getAuthor().isBot()) return;
+		Message message = event.getMessage();
+		String content = message.getRawContent();
+		TextChannel textChannel = event.getTextChannel();
+		//
+		if (content.startsWith("!")
 				&& event.getMessage().getAuthor().getId() != event.getJDA().getSelfUser().getId()) {
-			Client.handleCommand(Client.parser.parse(event.getMessage().getContent().toLowerCase(), event));
+			Client.handleCommand(Client.parser.parse(content.toLowerCase(), event));
 		}
-		if (event.getMessage().getContent().equalsIgnoreCase("ayy")) {
-			event.getTextChannel().addReactionById(event.getMessageId(), "🇱").queue();
-			event.getTextChannel().addReactionById(event.getMessageId(), "🇲").queue();
-			event.getTextChannel().addReactionById(event.getMessageId(), "🇦").queue();
-			event.getTextChannel().addReactionById(event.getMessageId(), "🇴").queue();
+		if (content.equalsIgnoreCase("ayy")) {
+			textChannel.addReactionById(event.getMessageId(), "🇱").queue();
+			textChannel.addReactionById(event.getMessageId(), "🇲").queue();
+			textChannel.addReactionById(event.getMessageId(), "🇦").queue();
+			textChannel.addReactionById(event.getMessageId(), "🇴").queue();
 		}
 	}
 

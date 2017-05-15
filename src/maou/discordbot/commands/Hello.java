@@ -13,7 +13,7 @@ public class Hello implements Command {
 
 	@Override
 	public void action(String[] args, MessageReceivedEvent event) {
-		event.getTextChannel().sendMessage("What's up my nigerian?").queue();
+		event.getTextChannel().sendMessage("Hello.").queue();
 	}
 
 	@Override
