@@ -37,7 +37,7 @@ public class Client {
 		commands.put("hello", new Hello());
 		commands.put("roll", new Roll());
 		commands.put("kms", new Shoot());
-		commands.put("purge", new PurgeCommand());
+		commands.put("purge", new PurgeCommand()); //LUUL
 	}
 
 	public static void handleCommand(CommandParser.CommandContainer cmd) {
@@ -51,7 +51,6 @@ public class Client {
 				commands.get(cmd.invoke).executed(safe, cmd.event);
 			}
 		}
-
 	}
 
 	public static void log(String evnt, String who) {
